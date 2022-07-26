@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\Element14Repository;
-use App\Helpers\MepaDataElement14Helper;
+use App\Helpers\{MepaDataElement14Helper,ArrayToCsvConverterHelper};
 
 class Element14Controller extends Controller
 {
@@ -36,8 +36,14 @@ class Element14Controller extends Controller
         $arrayData = json_decode($response,true);
 
         $extractedDataForMepa = MepaDataElement14Helper::extratedDataForMepa($arrayData['keywordSearchReturn']['products']);
-
-        dd($extractedDataForMepa);
+        $csvContent = ArrayToCsvConverterHelper::arrayToCsvConverter($extractedDataForMepa);
+       // dd($csvContent);
+        return response($csvContent)
+        ->withHeaders([
+            'Content-Type' => 'application/csv',
+            'Content-Disposition' => 'attachment; filename='.date('Ymd_His').'-mouser-'.$validated["keyword"].'.csv',
+            'Content-Transfer-Encoding' => 'UTF-8',
+        ]);
 
     }
 }

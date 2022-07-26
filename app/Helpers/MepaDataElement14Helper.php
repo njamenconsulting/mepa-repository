@@ -8,7 +8,7 @@ class MepaDataElement14Helper
 
     public static function extratedDataForMepa($array)
     {
-        dd($array); 
+       // dd($array); 
         for ($i=0; $i < count($array); $i++) { 
 
             $data[$i] = array(  'sku' => $array[$i]['sku'],
@@ -19,7 +19,7 @@ class MepaDataElement14Helper
                             'unitOfMeasure' => $array[$i]['unitOfMeasure'] ,
                             'id' => $array[$i]['id'] ,
                             'image' => self::BASE_URL.$array[$i]['image']['baseName'] ,
-                            'prices' => $array[$i]['prices'] ,
+                            'prices' => $array[$i]['prices'][0]['cost'] ,
                             'inv' => $array[$i]['inv'],
                             'vendorId' => $array[$i]['vendorId'],
                             'vendorName' => $array[$i]['vendorName'],

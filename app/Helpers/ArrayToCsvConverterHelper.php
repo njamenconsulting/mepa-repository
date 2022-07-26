@@ -9,7 +9,7 @@ class ArrayToCsvConverterHelper
      * @param  array $data the array of data
      * @return string       CSV text
      */
-    function str_putcsv($data) {
+    function arrayToCsvConverter($data) {
         # Generate CSV data from array
         $fh = fopen('php://temp', 'rw'); # don't create a file, attempt
                                         # to use memory instead
