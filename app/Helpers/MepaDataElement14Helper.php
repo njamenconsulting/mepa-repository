@@ -18,7 +18,7 @@ class MepaDataElement14Helper
                             'packSize' => $array[$i]['packSize'] ,
                             'unitOfMeasure' => $array[$i]['unitOfMeasure'] ,
                             'id' => $array[$i]['id'] ,
-                            'image' => self::BASE_URL.$array[$i]['image']['baseName'] ,
+                            'productImage' => self::BASE_URL.$array[$i]['image']['baseName'] ,
                             'prices' => $array[$i]['prices'][0]['cost'] ,
                             'inv' => $array[$i]['inv'],
                             'vendorId' => $array[$i]['vendorId'],
