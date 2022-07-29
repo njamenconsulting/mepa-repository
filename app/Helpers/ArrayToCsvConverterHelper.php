@@ -11,10 +11,9 @@ class ArrayToCsvConverterHelper
      */
 
     public static function arrayToCsvConverter($data) {
-
-        # Generate CSV data from array
-        $fh = fopen('php://temp', 'rw'); # don't create a file, attempt
-                                        # to use memory instead
+        # don't create a file, attempt to use memory instead
+        $fh = fopen('php://temp', 'rw'); 
+                                        
         # write out the headers
         fputcsv($fh, array_keys(current($data)),";");
 
@@ -25,6 +24,7 @@ class ArrayToCsvConverterHelper
             else dd($data,$row);
         }
         rewind($fh);
+        #put it all in a variable
         $csv = stream_get_contents($fh);
         fclose($fh);
 

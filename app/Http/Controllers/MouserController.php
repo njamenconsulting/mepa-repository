@@ -30,7 +30,7 @@ class MouserController extends Controller
         return view('mousers.mouser_index');
     }
     //
-    public function getPartsByKeyword(Request $request,JsonToCsvHelper $jsonToCsvHelper )
+    public function getPartsByKeyword(Request $request)
     {
         $validated = $request->validate([
             'keyword' => 'required|max:255',
@@ -40,10 +40,10 @@ class MouserController extends Controller
             'searchWithYourSignUpLanguage' => 'string',
             'version' => 'required|string',
         ]);
-       // dd($validated);
+   
         $jsonData = $this->_mouserRepository->getPartsByKeyword($validated);
         $arraydata = json_decode($jsonData,true);
-//dd($arraydata);
+
         $NumberOfResult = $arraydata['SearchResults']['NumberOfResult'];
         $nbOfRequest = $NumberOfResult/50;
        
@@ -63,8 +63,6 @@ class MouserController extends Controller
         }
 
         $data=MepaMouserDataHelper::extractedDataForMepa($result[0]);
-
-        //return view('mousers.mouser_index',$data);
  
         $csv = ArrayToCsvConverterHelper::arrayToCsvConverter($data);
 
@@ -73,7 +71,8 @@ class MouserController extends Controller
                         'Content-Type' => 'application/csv',
                         'Content-Disposition' => 'attachment; filename='.date('Ymd_His').'-mouser-'.$validated["keyword"].'.csv',
                         'Content-Transfer-Encoding' => 'UTF-8',
-                    ]);         
+                    ]);   
+        //return view('mousers.mouser_index',$data);      
     }
 
     public function manufacturerList()
