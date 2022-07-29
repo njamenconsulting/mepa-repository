@@ -60,7 +60,7 @@
                     <div class="col-md-4">
                         <label for="searchOptions" class="form-label  text-muted fw-bold">Search option</label>
                         <select name="searchOptions" class="form-select form-select-sm">
-                            <option value ="None" selected>Choose...</option>
+                            <option value ="RohsAndInStock" selected>RohsAndInStock </option>
                             <option value ="None"> None </option>
                             <option value ="Rohs"> Rohs </option>
                             <option value ="InStock"> InStock </option>
@@ -91,13 +91,13 @@
                             <legend class="col-form-label col-sm-4 pt-0  text-muted fw-bold">Version</legend>
                             <div class="col-sm-10">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="version"  value="v1" checked>
+                                    <input class="form-check-input" type="radio" name="version"  value="v1">
                                     <label class="form-check-label" for="version">
                                     V1
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="version"  value="v2">
+                                    <input class="form-check-input" type="radio" name="version"  value="v2" checked>
                                     <label class="form-check-label" for="version">
                                     V2
                                     </label>

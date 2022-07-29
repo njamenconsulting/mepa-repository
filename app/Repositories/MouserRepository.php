@@ -6,13 +6,12 @@ use App\Services\Curl\CurlService;
 
 Class MouserRepository
 {
-    private $_url;
+    const BASE_URL ="https://api.mouser.com/api/";
 
     private $_curlService;
     //
     public function __construct()
     {
-        $this->_url = 'https://api.mouser.com/api/v1/search/keyword?apiKey=a76659c5-f632-4836-bf84-8b8c507dcc70';
         $this->_curlService = new CurlService();
     }
     //
@@ -22,14 +21,13 @@ Class MouserRepository
         $version = array_pop($array);
         $data['SearchByKeywordRequest'] = $array;
       
-        $this->_url = 'https://api.mouser.com/api/'.$version.'/search/keyword?apiKey=a76659c5-f632-4836-bf84-8b8c507dcc70';
+        $url = 'https://api.mouser.com/api/'.$version.'/search/keyword?apiKey=a76659c5-f632-4836-bf84-8b8c507dcc70';
 
         $fields = json_encode($data);
 
-        $header = array(
-                        'Content-Type: application/json', // if the content type is json
-                       );
-        return $this->_curlService->postRequest($this->_url, $fields, $header);
+        $header = array('Content-Type: application/json');
+
+        return $this->_curlService->postRequest($url, $fields, $header);
 
     }
     //

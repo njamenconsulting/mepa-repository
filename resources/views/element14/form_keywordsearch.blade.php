@@ -39,15 +39,16 @@
                             <option value ="Semiconductors">Semiconductors</option>
                             <option  value ="Test%2CMeasurement">Test & Measurement</option>
                             <option  value ="Electromechanical">Electromechanical</option>
+                            <option  value ="q">q</option>
                         </select>
                     </div>
                     <div class="col-md-3">
                     <label for="storeInfo" class="form-label text-muted fw-bold"> Store identifier </label>
                         <select name="storeInfo" class="form-select form-select-sm">
-                            <option value ="uk.farnell.com" selected>Choose...</option>
+                            <option value ="uk.farnell.com" selected>uk.farnell.com</option>
                             <option value ="de.farnell.com">de.farnell.com</option>
                             <option  value ="it.farnell.com">it.farnell.com</option>
-                            <option  value ="it.farnell.com">uk.farnell.com</option>
+                            <option  value ="uk.farnell.com">uk.farnell.com</option>
                         </select>
                     </div>
                     <div class="col-md-3">

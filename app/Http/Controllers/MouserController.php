@@ -40,27 +40,33 @@ class MouserController extends Controller
             'searchWithYourSignUpLanguage' => 'string',
             'version' => 'required|string',
         ]);
-       // $mepaData 
+       // dd($validated);
         $jsonData = $this->_mouserRepository->getPartsByKeyword($validated);
-       // dd($jsonData);
         $arraydata = json_decode($jsonData,true);
-        //dd($arraydata);
-        $data['parts']=MepaMouserDataHelper::extractedDataForMepa($arraydata['SearchResults']['Parts']);
-        //dd($data);
-        //return view('mousers.mouser_index',$data);
-        
-        
-        //Delete all key who has an array
-        for ($i=0; $i < count($arraydata['SearchResults']['Parts']); $i++) { 
-            unset($arraydata['SearchResults']['Parts'][$i]["ProductAttributes"]);
-            //unset($arraydata['SearchResults']['Parts'][$i]["PriceBreaks"]);
-            unset($arraydata['SearchResults']['Parts'][$i]["InfoMessages"]);
-            unset($arraydata['SearchResults']['Parts'][$i]["ProductCompliance"]);
-            unset($arraydata['SearchResults']['Parts'][$i]["AlternatePackagings"]);
-            
+//dd($arraydata);
+        $NumberOfResult = $arraydata['SearchResults']['NumberOfResult'];
+        $nbOfRequest = $NumberOfResult/50;
+       
+        $validated['startingRecord'] = 50;
+        $result=[];
+        $result[0] = $arraydata['SearchResults']['Parts'];
+
+        for ($i=1; $i < 5; $i++) { 
+            //echo $validated['startingRecord'];
+
+            $jsonData = $this->_mouserRepository->getPartsByKeyword($validated);
+            $arraydata = json_decode($jsonData,true);
+
+            $result[$i] = $arraydata['SearchResults']['Parts'];
+            $result[0] = array_merge($result[0], $result[$i] );
+            $validated['startingRecord'] = $validated['startingRecord'] + 50 ;
         }
-        
-        $csv = $jsonToCsvHelper::JsonToCsvHelper($arraydata['SearchResults']['Parts']);
+
+        $data=MepaMouserDataHelper::extractedDataForMepa($result[0]);
+
+        //return view('mousers.mouser_index',$data);
+ 
+        $csv = ArrayToCsvConverterHelper::arrayToCsvConverter($data);
 
         return response($csv)
                     ->withHeaders([

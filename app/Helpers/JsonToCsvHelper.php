@@ -17,15 +17,17 @@ class JsonToCsvHelper
         
         $priceBreak = "";
         foreach($data as $row){
-      
+      /*
             for ($i=0; $i < count($row['PriceBreaks']); $i++) { 
                 $quantity = $row['PriceBreaks'][$i]['Quantity'];
                 $price = $row['PriceBreaks'][$i]['Price'];
                 $priceBreak .= $quantity."/".$price."-";
             }
             $row['PriceBreaks']=$priceBreak;
+            */
             // Write the data to the CSV file
-       
+            $row['PriceBreaks']= $row['PriceBreaks'][0]['Price'];//Extract unit price from PriceBreaks
+            $row['Availability']=preg_replace('/[^0-9]/', '', $row['Availability']);//Extract only number form string
             fputcsv($filePointer, $row);
         }
 

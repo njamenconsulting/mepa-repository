@@ -34,7 +34,7 @@ class Element14Controller extends Controller
 
         $response = $this->_element14Repository->keywordSearch($validated);
         $arrayData = json_decode($response,true);
-
+dd($arrayData);
         $extractedDataForMepa = MepaDataElement14Helper::extratedDataForMepa($arrayData['keywordSearchReturn']['products']);
         
         $csvContent = ArrayToCsvConverterHelper::arrayToCsvConverter($extractedDataForMepa);
