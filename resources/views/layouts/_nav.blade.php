@@ -27,8 +27,8 @@
                Element14
             </a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuElement14">
-            <li><a class="dropdown-item" href="{{ url('element14')}}">About </a></li>
-            <li><a class="dropdown-item" href="{{ url('element14/keywordSearch')}}">Keyword </a></li>
+            <li><a class="dropdown-item" href="{{ url('element14')}}">Helps</a></li>
+            <li><a class="dropdown-item" href="{{ url('element14/keywordSearch')}}">Keyword</a></li>
                <li><a class="dropdown-item" href="#">Part number</a></li>
             </ul>
          </li>
@@ -39,7 +39,8 @@
                Mouser
             </a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuMouser">
-               <li><a class="dropdown-item" href="{{ url('mouser')}}">keyword </a></li>
+               <li><a class="dropdown-item" href="{{ url('mouser')}}">Helps</a></li>
+               <li><a class="dropdown-item" href="{{ url('mouser/keywordSearch')}}">keyword</a></li>
                <li><a class="dropdown-item" href="#">part number</a></li>
             </ul>
          </li>

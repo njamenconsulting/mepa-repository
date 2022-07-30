@@ -9,7 +9,7 @@
     @section('content')
 
         <div class="bg-light p-5 rounded">
-            <p class="lead"> Mepa-repository app is a mirifica platform that allow to retrieve products catalo from different suppliers</p>
+            <p class="lead"> Mepa-repository app is a mirifica platform that allow to retrieve products catalog (product data) from different suppliers</p>
             <ul>
                 <li>Arrow</li>
                 <li>Digi-Key</li>

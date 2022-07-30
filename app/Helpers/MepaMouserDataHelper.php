@@ -2,8 +2,17 @@
 
 namespace App\Helpers;
 
+/**
+ * MepaMouserDataHelper 
+ */
 class MepaMouserDataHelper
-{
+{    
+    /**
+     * This function allows to extract mepa data from results returned 
+     *
+     * @param  array $data
+     * @return array $mepaData
+     */
     public static function extractedDataForMepa($data)
     {
 
@@ -17,7 +26,8 @@ class MepaMouserDataHelper
             if (!array_key_exists("MouserPartNumber", $value)) $value["MouserPartNumber"] = "NaN";
             if (!array_key_exists("PriceBreaks", $value)) $value["PriceBreaks"] = "NaN";
             if (!array_key_exists("ProductDetailUrl", $value)) $value["ProductDetailUrl"] = "NaN";
-
+            if (!array_key_exists("MouserProductCategory", $value)) $value["MouserProductCategory"] = "NaN";
+            #I the case where PriceBreaks in not an array 
             if(count($value["PriceBreaks"])>1) $value["PriceBreaks"] = $value["PriceBreaks"][0]["Price"] ;
             else $value["PriceBreaks"] = "NaN" ;
 
@@ -29,7 +39,8 @@ class MepaMouserDataHelper
                             "ManufacturerPartNumber"=>$value["ManufacturerPartNumber"],
                             "MouserPartNumber"=>$value["MouserPartNumber"],
                             "PriceBreaks"=>$value["PriceBreaks"],
-                            "ProductDetailUrl"=>$value["ProductDetailUrl"]
+                            "ProductDetailUrl"=>$value["ProductDetailUrl"],
+                            "MouserProductCategory"=>$value["MouserProductCategory"],
                         ] ;
         }
 

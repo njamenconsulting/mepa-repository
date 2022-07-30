@@ -29,8 +29,12 @@ class MouserController extends Controller
     {
         return view('mousers.mouser_index');
     }
+    public function getFormKeywordSearch()
+    {
+        return view('mousers.form_keywordsearch');
+    }
     //
-    public function getPartsByKeyword(Request $request)
+    public function postFormKeywordSearch(Request $request)
     {
         $validated = $request->validate([
             'keyword' => 'required|max:255',
@@ -40,7 +44,7 @@ class MouserController extends Controller
             'searchWithYourSignUpLanguage' => 'string',
             'version' => 'required|string',
         ]);
-   
+        
         $jsonData = $this->_mouserRepository->getPartsByKeyword($validated);
         $arraydata = json_decode($jsonData,true);
 
@@ -51,9 +55,8 @@ class MouserController extends Controller
         $result=[];
         $result[0] = $arraydata['SearchResults']['Parts'];
 
-        for ($i=1; $i < 5; $i++) { 
-            //echo $validated['startingRecord'];
-
+        for ($i=1; $i < 50; $i++) { 
+  
             $jsonData = $this->_mouserRepository->getPartsByKeyword($validated);
             $arraydata = json_decode($jsonData,true);
 
@@ -63,7 +66,7 @@ class MouserController extends Controller
         }
 
         $data=MepaMouserDataHelper::extractedDataForMepa($result[0]);
- 
+
         $csv = ArrayToCsvConverterHelper::arrayToCsvConverter($data);
 
         return response($csv)
