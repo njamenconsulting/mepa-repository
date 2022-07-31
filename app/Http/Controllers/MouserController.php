@@ -38,10 +38,9 @@ class MouserController extends Controller
     {
         $validated = $request->validate([
             'keyword' => 'required|max:255',
-            'records' => 'integer',
-            'startingRecord' => 'integer',
-            'searchOptions' => 'string',
-            'searchWithYourSignUpLanguage' => 'string',
+            'records' => 'required|integer',
+            'startingRecord' => 'required|integer',
+            'searchOptions' => 'required|string',
             'version' => 'required|string',
         ]);
         
@@ -55,7 +54,7 @@ class MouserController extends Controller
         $result=[];
         $result[0] = $arraydata['SearchResults']['Parts'];
 
-        for ($i=1; $i < 50; $i++) { 
+        for ($i=1; $i < 2; $i++) { 
   
             $jsonData = $this->_mouserRepository->getPartsByKeyword($validated);
             $arraydata = json_decode($jsonData,true);

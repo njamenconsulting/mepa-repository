@@ -14,44 +14,45 @@
             <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Mouser</a></li>
-                <li class="breadcrumb-item"><a href="#">keywordSearch</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Data</li>
+       
+                <li class="breadcrumb-item active" aria-current="page">Keyword Method</li>
             </ol>
             </nav>
 
             <form action="{{ url('mouser/keywordSearch')}} " method ="POST">
             @csrf
-            
-                @if ($errors->any())
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                @endif
+
                 <div class="row">
                     <div class="col-md-4">
                         <label for="keyword" class="form-label text-muted fw-bold"> Keyword </label>
                         <select name="keyword" class="form-select form-select-sm">
                             <option value ="" selected>Choose...</option>
-                            <option value ="Circuit Protection">Circuit Protection</option>
-                            <option  value ="Electromechanical">Electromechanical</option>
-                            <option value ="Embedded Solutions">Embedded Solutions</option>
-                            <option  value ="Enclosures">Enclosures</option>
-                            <option value ="Connectors">Connectors</option>
-                            <option value ="Engineering Tools">Engineering Tools</option>
-                            <option value ="Industrial Automation">Industrial Automation</option>
+                            <option value ="Circuit Protection" @if(old("keyword") =="Circuit Protection"){{"selected"}} @endif>Circuit Protection</option>
+                            <option value ="Electromechanical" @if(old("keyword") =="Electromechanical"){{"selected"}} @endif>Electromechanical</option>
+                            <option value ="Embedded Solutions" @if(old("keyword") =="Embedded Solutions"){{"selected"}} @endif>Embedded Solutions</option>
+                            <option  value ="Enclosures" @if(old("keyword") =="Enclosures"){{"selected"}} @endif>Enclosures</option>
+                            <option value ="Connectors" @if(old("keyword") =="Connectors"){{"selected"}} @endif>Connectors</option>
+                            <option value ="Engineering Tools" @if(old("keyword") =="Engineering Tools"){{"selected"}} @endif>Engineering Tools</option>
+                            <option value ="Industrial Automation" @if(old("keyword") =="Industrial Automation"){{"selected"}} @endif>Industrial Automation</option>
                         </select>
+
+                        @error('keyword')
+                        <div class="form-text alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-md-3">
                         <label for="records" class="form-label  text-muted fw-bold">Records:</label>
-                        <input type="number" min="10" value="50" class="form-control  form-control-sm" name="records">
+                        <input type="number" min="10" value="50" class="@error('records') is-invalid @enderror form-control  form-control-sm" name="records">
+                        @error('records')
+                        <div class="form-text alert alert-danger">{{ $message }}</div>
+                        @enderror                   
                     </div>
                     <div class="col-md-3">
                         <label for="startingRecord" class="form-label  text-muted fw-bold">Starting record</label>
-                        <input type="number" min="1" value="1" class="form-control  form-control-sm" name="startingRecord">
+                        <input type="number" min="1" value="1" class="@error('startingRecord') is-invalid @enderror form-control  form-control-sm" name="startingRecord">
+                        @error('startingRecord')
+                        <div class="form-text alert alert-danger">{{ $message }}</div>
+                        @enderror                    
                     </div>
 
                 </div>
@@ -61,10 +62,10 @@
                         <label for="searchOptions" class="form-label  text-muted fw-bold">Search option</label>
                         <select name="searchOptions" class="form-select form-select-sm">
                             <option value ="RohsAndInStock" selected>RohsAndInStock </option>
-                            <option value ="None"> None </option>
-                            <option value ="Rohs"> Rohs </option>
-                            <option value ="InStock"> InStock </option>
-                            <option value ="RohsAndInStock"> RohsAndInStock </option>
+                            <option value ="None" @if(old("searchOptions") =="None"){{"selected"}} @endif> None </option>
+                            <option value ="Rohs"  @if(old("searchOptions") =="Rohs"){{"selected"}} @endif> Rohs </option>
+                            <option value ="InStock" @if(old("searchOptions") =="InStock"){{"selected"}} @endif> InStock </option>
+                            <option value ="RohsAndInStock" @if(old("searchOptions") =="RohsAndInStock"){{"selected"}} @endif> RohsAndInStock </option>
                         </select>
                     </div>
                     <div class="col-md-3">
@@ -72,13 +73,13 @@
                             <legend class="col-form-label col-sm-4 pt-0  text-muted fw-bold">Version</legend>
                             <div class="col-sm-10">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="version"  value="v1">
+                                    <input class="form-check-input" type="radio" name="version"  value="v1" @if(old("version") =="v1"){{"checked"}} @endif>
                                     <label class="form-check-label" for="version">
                                     Version V1
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="version"  value="v2" checked>
+                                    <input class="form-check-input" type="radio" name="version"  value="v2" @if(old("version") =="v1"){{""}} @else {{"checked"}} @endif>
                                     <label class="form-check-label" for="version">
                                     Version V2
                                     </label>

@@ -84,6 +84,10 @@
             @yield('content')
 
         </main>
+        
+        <footer class="d-flex flex-wrap align-items-center py-3 my-4 border-top">
+            <p class="col-md-4 mb-0 text-muted text-center">&copy; 2022 Mirifica Srl</p>
+        </footer>
 
 
         <script src="{{ asset('assets/js/bootstrap.bundle.min.js')}}"></script>

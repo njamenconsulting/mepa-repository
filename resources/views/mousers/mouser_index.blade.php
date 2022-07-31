@@ -25,12 +25,55 @@
                 <ul>
                     <li>Search by Keyword Method</li>
                     <li>Search by Part Number Method</li>
-                    <hr>
                     <li>Up to 50 results returned per call</li>
                     <li>Up to 30 calls per minute</li>
                     <li>Up to 1,000 calls per day</li>
                 </ul>
-                <h3>SearchApi</h3>
+                <hr>
+                <h3>Request parameters</h3>
+                <h4 class="text-muted">Keyword Method</h4>
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Term</th>
+                            <th scope="col">Explanation</th>
+                            <th scope="col">Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>keyword</td>
+                            <td>Used for keyword part search</td>
+                            <td>string</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Records</td>
+                            <td>Used to specify how many records the method should return.</td>
+                            <td>integer($int32)</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>startingRecord</td>
+                            <td>Indicates where in the total recordset the return set should begin</td>
+                            <td>integer($int32)</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4</th>
+                            <td>searchOptions</td>
+                            <td>Optionel. Refers to options supported by the search engine.Available options: None | Rohs | InStock | RohsAndInStock</td>
+                            <td>string</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">5</th>
+                            <td>searchWithYourSignUpLanguage</td>
+                            <td>Optional. If not provided, the default is false. Used when searching for keywords in the language specified when you signed up for Search API. Can use string representation: true.</td>
+                            <td>string</td>
+                        </tr>
+                    </tbody>
+                </table>
            </div>
     
   
