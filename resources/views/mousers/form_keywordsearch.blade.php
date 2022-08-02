@@ -61,11 +61,11 @@
                     <div class="col-md-4">
                         <label for="searchOptions" class="form-label  text-muted fw-bold">Search option</label>
                         <select name="searchOptions" class="form-select form-select-sm">
-                            <option value ="RohsAndInStock" selected>RohsAndInStock </option>
+                            <option value ="InStock" selected>In Stock </option>
                             <option value ="None" @if(old("searchOptions") =="None"){{"selected"}} @endif> None </option>
                             <option value ="Rohs"  @if(old("searchOptions") =="Rohs"){{"selected"}} @endif> Rohs </option>
                             <option value ="InStock" @if(old("searchOptions") =="InStock"){{"selected"}} @endif> InStock </option>
-                            <option value ="RohsAndInStock" @if(old("searchOptions") =="RohsAndInStock"){{"selected"}} @endif> RohsAndInStock </option>
+                            <option value ="RohsAndInStock" @if(old("searchOptions") =="RohsAndInStock"){{"selected"}} @endif> Rohs And InStock </option>
                         </select>
                     </div>
                     <div class="col-md-3">
