@@ -53,7 +53,7 @@ class Element14Controller extends Controller
         $numberOfResultsReturned = $responseArray['keywordSearchReturn']['products'];    
         #to deduce the number of loop
         $nbOfRequest = $numberOfResults/50;
-        $nbOfRequest = 100;
+        $nbOfRequest = 10;
        
         #Loop to retrieve all result returned or all products found
         for ($i=1; $i < $nbOfRequest ; $i++) { 
