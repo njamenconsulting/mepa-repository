@@ -64,7 +64,7 @@ class Element14Controller extends Controller
 
         #Convert array returned from API in csv file
         $csvContent = ArrayToCsvConverterHelper::arrayToCsvConverter($mepaData[0]);
-      dd($csvContent);
+      //dd($csvContent);
         return response($csvContent)
                 ->withHeaders([
                                 'Content-Type' => 'application/csv',

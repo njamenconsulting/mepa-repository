@@ -92,44 +92,7 @@
         <div class="bg-warning m-2 p-2">
             <p class="lead"> Search Result: </p>
             <a class="btn btn-md btn-primary" href="#" role="button"> Download csv file &raquo;</a>
-            <table class="table caption-top">
-                <caption>Extracted fields for MEPA</caption>
-                <thead>
-                    <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Manufacturer article code </th>
-                    <th scope="col">Commercial name </th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Supplier article code </th>
-                    <th scope="col">Computer board brand </th>
-                    <th scope="col">Image</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                </tbody>
-            </table> 
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-end">
-                    <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>     
+   
         </div>
 
 
