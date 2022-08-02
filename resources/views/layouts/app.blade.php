@@ -11,6 +11,7 @@
         <!-- Favicon -->
         <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
         <link href="{{ asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
             <style>
             body {

@@ -19,9 +19,10 @@
             </nav>
 
             <div class="container-md">
-                <h2>Summary about Mouser API service</h2>
+
+                <h4 class="text-warning">Description</h4>
                 <p>The Search API service allows us to utilise Mouser's product data, availability, and pricing in our applications.</p>
-                <h3>Features</h3>
+                
                 <ul>
                     <li>Search by Keyword Method</li>
                     <li>Search by Part Number Method</li>
@@ -30,9 +31,9 @@
                     <li>Up to 1,000 calls per day</li>
                 </ul>
                 <hr>
-                <h3>Request parameters</h3>
-                <h4 class="text-muted">Keyword Method</h4>
-                <table class="table table-striped table-hover">
+
+                <h4 class="text-warning">Request parameters</h4>
+                <table class="table table-striped table-hover table-bordered border-warning">
                     <thead>
                         <tr>
                             <th scope="col">#</th>

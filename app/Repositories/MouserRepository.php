@@ -7,14 +7,28 @@ use App\Services\Curl\CurlService;
 Class MouserRepository
 {
     const BASE_URL ="https://api.mouser.com/api/";
-
-    private $_curlService;
-    //
+    
+    /**
+     * _curlService
+     *
+     * @var mixed
+     */
+    private $_curlService;   
+    /**
+     * __construct
+     *
+     * @return void
+     */
     public function __construct()
     {
         $this->_curlService = new CurlService();
-    }
-    //
+    }  
+    /**
+     * getPartsByKeyword
+     *
+     * @param  mixed $array
+     * @return json string 
+     */
     public function getPartsByKeyword($array)
     {
         //on recupère (couper) le dernier element du tableau 

@@ -89,7 +89,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="row m-2">
-                            <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-sm btn-warning text-muted"><i class="bi bi-send-fill"></i> Submit</button>
                         </div>
                     </div>
                 </div>

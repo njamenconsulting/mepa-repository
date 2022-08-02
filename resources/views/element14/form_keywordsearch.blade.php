@@ -14,8 +14,7 @@
             <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Element14</a></li>
-                <li class="breadcrumb-item"><a href="#">keywordSearch</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Data</li>
+                <li class="breadcrumb-item active" aria-current="page">keywordSearch</li>
             </ol>
             </nav>
 
@@ -39,6 +38,7 @@
                             <option value ="Semiconductors">Semiconductors</option>
                             <option  value ="Test%2CMeasurement">Test & Measurement</option>
                             <option  value ="Electromechanical">Electromechanical</option>
+                            <option  value ="Coaxial%2CCable">Coaxial Cable</option>
                             <option  value ="q">q</option>
                         </select>
                     </div>

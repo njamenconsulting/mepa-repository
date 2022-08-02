@@ -11,6 +11,7 @@ class ArrayToCsvConverterHelper
      */
 
     public static function arrayToCsvConverter($data) {
+      
         # don't create a file, attempt to use memory instead
         $fh = fopen('php://temp', 'rw'); 
                                         
@@ -19,7 +20,7 @@ class ArrayToCsvConverterHelper
 
         # write out the data
         foreach ( $data as $row ) {
-
+     
             if(is_array($row)) fputcsv($fh, $row,";");
             else dd($data,$row);
         }
