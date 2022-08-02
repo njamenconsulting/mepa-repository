@@ -53,7 +53,7 @@
                     </div>
                     <div class="col-md-3">
                         <label for="numberOfResults" class="form-label  text-muted fw-bold"> Number of results to be returned </label>
-                        <input type="number" min="10" max="100000" value="20" class="form-control  form-control-sm" name="numberOfResults">
+                        <input type="number" min="10" max="100000" value="25" class="form-control  form-control-sm" name="numberOfResults">
                     </div>
 
                 </div>

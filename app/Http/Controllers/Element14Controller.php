@@ -38,33 +38,37 @@ class Element14Controller extends Controller
             'filters' => 'string',
             'responseGroup' => 'string',
         ]);
-        
-        $response = $this->_element14Repository->keywordSearch($validated);
-        $arrayData = json_decode($response,true);
+        $validated['startingOffset'] = 0;
+        #Retrieving 25 products data from starting offset 0
+        $responseJson = $this->_element14Repository->keywordSearch($validated);
+        $responseArray = json_decode($responseJson,true);
 
-        $NumberOfResult  = $arrayData['keywordSearchReturn']['numberOfResults'];
-        $nbOfRequest = $NumberOfResult/50;
+        #To store all result of product data
         $mepaData = array();
+        #Initialize with first result
+        $mepaData[0] = MepaDataElement14Helper::extratedDataForMepa($responseArray['keywordSearchReturn']['products']);
+        #Number of results found
+        $numberOfResults  = $responseArray['keywordSearchReturn']['numberOfResults'];
+        #Number of results returned
+        $numberOfResultsReturned = $responseArray['keywordSearchReturn']['products'];    
+        #to deduce the number of loop
+        $nbOfRequest = $numberOfResults/50;
+        #Loop to retrieve all result returned or all products found
+        for ($i=1; $i < $numberOfResults/25 ; $i++) { 
 
-        foreach ($arrayData as $key => $value) {
-            # Retrieving the number of products found
-            $NumberOfResultReturned = $value['numberOfResults'];
-            $NumberOfResultReturned = 200;
-            $mepaData[0] = MepaDataElement14Helper::extratedDataForMepa($value['products']);
-            
-            for ($i=1; $i < $NumberOfResultReturned/25 ; $i++) { 
-                
-                # Retrieving the 25 results /loop
-                $extractedDataForMepa[$i] = MepaDataElement14Helper::extratedDataForMepa($value['products']);
-                //
-                $mepaData[0] = array_merge($mepaData[0],$extractedDataForMepa[$i]);
-               
-            }  
-        }
+            $responseJson = $this->_element14Repository->keywordSearch($validated);
+            $responseArray = json_decode($responseJson,true);                       
+       
+            $extractedDataForMepa[$i] = MepaDataElement14Helper::extratedDataForMepa($responseArray['keywordSearchReturn']['products']);
+            #add new products data 
+            $mepaData[0] = array_merge($mepaData[0],$extractedDataForMepa[$i]);
+            #set starting offset
+            $validated['startingOffset'] = $validated['startingOffset'] + 25;//$numberOfResultsReturned
+        } 
 
         #Convert array returned from API in csv file
         $csvContent = ArrayToCsvConverterHelper::arrayToCsvConverter($mepaData[0]);
-      //dd($csvContent);
+
         return response($csvContent)
                 ->withHeaders([
                                 'Content-Type' => 'application/csv',
