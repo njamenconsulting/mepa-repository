@@ -42,7 +42,7 @@ class Element14Controller extends Controller
         #Retrieving 25 products data from starting offset 0
         $responseJson = $this->_element14Repository->keywordSearch($validated);
         $responseArray = json_decode($responseJson,true);
-
+        
         #To store all result of product data
         $mepaData = array();
         #Initialize with first result
@@ -53,18 +53,24 @@ class Element14Controller extends Controller
         $numberOfResultsReturned = $responseArray['keywordSearchReturn']['products'];    
         #to deduce the number of loop
         $nbOfRequest = $numberOfResults/50;
+        $nbOfRequest = 100;
+       
         #Loop to retrieve all result returned or all products found
-        for ($i=1; $i < $numberOfResults/25 ; $i++) { 
+        for ($i=1; $i < $nbOfRequest ; $i++) { 
 
             $responseJson = $this->_element14Repository->keywordSearch($validated);
-            $responseArray = json_decode($responseJson,true);                       
-       
-            $extractedDataForMepa[$i] = MepaDataElement14Helper::extratedDataForMepa($responseArray['keywordSearchReturn']['products']);
-            #add new products data 
-            $mepaData[0] = array_merge($mepaData[0],$extractedDataForMepa[$i]);
-            #set starting offset
-            $validated['startingOffset'] = $validated['startingOffset'] + 25;//$numberOfResultsReturned
-        } 
+            $responseArray = json_decode($responseJson,true); 
+
+            if (array_key_exists("products", $responseArray['keywordSearchReturn']))
+            {            
+                $extractedDataForMepa[$i] = MepaDataElement14Helper::extratedDataForMepa($responseArray['keywordSearchReturn']['products']);
+                #add new products data 
+                $mepaData[0] = array_merge($mepaData[0],$extractedDataForMepa[$i]);
+                #set starting offset
+                $validated['startingOffset'] = $validated['startingOffset'] + 25;//$numberOfResultsReturned
+            }
+            else break;
+        }
 
         #Convert array returned from API in csv file
         $csvContent = ArrayToCsvConverterHelper::arrayToCsvConverter($mepaData[0]);
