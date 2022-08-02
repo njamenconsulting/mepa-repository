@@ -49,7 +49,7 @@
                     </div>
                     <div class="col-md-3">
                         <label for="startingRecord" class="form-label  text-muted fw-bold">Starting record</label>
-                        <input type="number" min="1" value="1" class="@error('startingRecord') is-invalid @enderror form-control  form-control-sm" name="startingRecord">
+                        <input type="number" min="0" value="0" class="@error('startingRecord') is-invalid @enderror form-control  form-control-sm" name="startingRecord">
                         @error('startingRecord')
                         <div class="form-text alert alert-danger">{{ $message }}</div>
                         @enderror                    

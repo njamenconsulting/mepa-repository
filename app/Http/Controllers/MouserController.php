@@ -50,11 +50,10 @@ class MouserController extends Controller
         $NumberOfResult = $arraydata['SearchResults']['NumberOfResult'];
         $nbOfRequest = $NumberOfResult/50;
        
-        $validated['startingRecord'] = 50;
         $result=[];
         $result[0] = $arraydata['SearchResults']['Parts'];
 
-        for ($i=1; $i < 2; $i++) { 
+        for ($i=1; $i < 20; $i++) { 
   
             $jsonData = $this->_mouserRepository->getPartsByKeyword($validated);
             $arraydata = json_decode($jsonData,true);
