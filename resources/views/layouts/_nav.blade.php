@@ -33,7 +33,7 @@
             </ul>
          </li>
       </ul>
-        <ul class="navbar-nav">
+      <ul class="navbar-nav">
          <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuMouser" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                Mouser
@@ -42,6 +42,17 @@
                <li><a class="dropdown-item" href="{{ url('mouser')}}">Helps</a></li>
                <li><a class="dropdown-item" href="{{ url('mouser/keywordSearch')}}">keyword</a></li>
                <li><a class="dropdown-item" href="#">part number</a></li>
+            </ul>
+         </li>
+      </ul>
+      <ul class="navbar-nav">
+         <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuTrenz" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+               Trenz
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuTrenz">
+               <li><a class="dropdown-item" href="{{ url('trenz')}}">Helps</a></li>
+               <li><a class="dropdown-item" href="{{ url('trenz/getAll')}}">Articles</a></li>
             </ul>
          </li>
       </ul>

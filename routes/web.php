@@ -6,6 +6,7 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\DigikeyController;
 use App\Http\Controllers\MouserController;
 use App\Http\Controllers\Element14Controller;
+use App\Http\Controllers\TrenzController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,4 +33,10 @@ Route::controller(Element14Controller::class)->group(function () {
     Route::get('element14', 'index');
     Route::get('element14/keywordSearch', 'getFormKeywordSearch');
     Route::post('element14/keywordSearch', 'postFormKeywordSearch');
+});
+
+Route::controller(TrenzController::class)->group(function () {
+    Route::get('trenz', 'index');
+    Route::get('trenz/getAll', 'getAllArticles');
+    Route::post('trenz/keywordSearch', 'postFormKeywordSearch');
 });
