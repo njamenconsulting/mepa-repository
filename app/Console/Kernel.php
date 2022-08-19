@@ -20,7 +20,7 @@ class Kernel extends ConsoleKernel
         $schedule->call(function() {
             $trenzRepository = new TrenzRepository();
             $trenzRepository->getArticle();
-        })->everyMinute();
+        })->hourly();//->everyMinute();
     }
 
     /**
